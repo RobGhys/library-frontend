@@ -1,12 +1,21 @@
+import {useQuery} from '@apollo/client'
 import { useState } from 'react'
 import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 
-const App = () => {
-  const [page, setPage] = useState('authors')
+import {ALL_AUTHORS} from './queries'
 
-  return (
+const App = () => {
+    const [page, setPage] = useState('authors')
+    const result = useQuery(ALL_AUTHORS);
+
+    if (result.loading) {
+        // the query has not received a response yet
+        return <div>loading...</div>
+    }
+
+    return (
     <div>
       <div>
         <button onClick={() => setPage('authors')}>authors</button>
@@ -14,13 +23,13 @@ const App = () => {
         <button onClick={() => setPage('add')}>add book</button>
       </div>
 
-      <Authors show={page === 'authors'} />
+      <Authors show={page === 'authors'} authors={result.data.allAuthors}  />
 
       <Books show={page === 'books'} />
 
       <NewBook show={page === 'add'} />
     </div>
-  )
+    )
 }
 
 export default App
