@@ -8,9 +8,10 @@ import {ALL_AUTHORS} from './queries'
 
 const App = () => {
     const [page, setPage] = useState('authors')
-    const result = useQuery(ALL_AUTHORS);
-
-    if (result.loading) {
+    const resultAuthors = useQuery(ALL_AUTHORS);
+    
+    
+    if (resultAuthors.loading) {
         // the query has not received a response yet
         return <div>loading...</div>
     }
@@ -23,9 +24,9 @@ const App = () => {
         <button onClick={() => setPage('add')}>add book</button>
       </div>
 
-      <Authors show={page === 'authors'} authors={result.data.allAuthors}  />
+      <Authors show={page === 'authors'} authors={resultAuthors.data.allAuthors} />
 
-      <Books show={page === 'books'} />
+      <Books show={page === 'books'}  />
 
       <NewBook show={page === 'add'} />
     </div>
