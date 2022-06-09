@@ -1,7 +1,6 @@
 const Authors = ({ show, authors }) => {
-  if (!show) {
-    return null
-  }
+  if (!show) return null
+  
 
   return (
     <div>
@@ -16,7 +15,6 @@ const Authors = ({ show, authors }) => {
           {authors.map(a =>
             <tr key={a.name}>
               <td>{a.name}</td>
-
               <td>{a.born !== null ? a.born : '?'}</td>
               <td>{a.nbBooks}</td>
             </tr>
