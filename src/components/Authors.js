@@ -4,7 +4,6 @@ import {ALL_AUTHORS, EDIT_BORN} from "../queries"
 
 const Authors = ({ show, authors, setError }) => {
   
-
   const [name, setName] = useState('');
   const [setBornTo, setSetBornTo] = useState('');
 

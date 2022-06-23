@@ -47,3 +47,11 @@ mutation editAuthor($name: String!, $setBornTo: String!) {
     }
 }
 `
+
+export const LOGIN = gql`
+mutation login($surname: String!, $password: String!) {
+    login(username: $username, password: $password) {
+        value
+    }
+}
+`
